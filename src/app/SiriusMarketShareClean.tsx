@@ -3292,79 +3292,133 @@ export default function SiriusMarketShare() {
                     </div>
                   </div>
                   
-                  {/* Mobile-optimized table */}
-                  <div className="overflow-x-auto">
-                    <table className="w-full mb-6 sm:mb-8 text-gray-200 border-separate border-spacing-y-1 sm:border-spacing-y-2 min-w-max">
-                      <thead>
-                        <tr className="text-green-400 text-sm sm:text-lg">
-                          <th className="p-1 sm:p-2 text-left text-xs sm:text-base">{t.dataType}</th>
-                          {marketShares.map((row) => (
-                            <th key={row.halbjahr} className="p-1 sm:p-2 text-center text-xs sm:text-base">{translatePeriod(row.halbjahr, t)}</th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {/* Branche Row */}
-                        <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
-                          <td className="p-1 sm:p-2 rounded-l-lg font-medium text-green-300 text-xs sm:text-base">{t.industryRevenueMio}</td>
-                          {marketShares.map((row) => (
-                            <td key={row.halbjahr} className="p-1 sm:p-2 text-center text-xs sm:text-base">{row.branche.toFixed(1)}</td>
-                          ))}
-                        </tr>
+                  {/* Mobile-first responsive table */}
+                  <div className="mb-6 sm:mb-8">
+                    {/* Mobile Card Layout */}
+                    <div className="block sm:hidden space-y-3">
+                      {marketShares.map((row, index) => {
+                        const percentageIncrease = index === 0 ? null : 
+                          ((row.marketShare - marketShares[index - 1].marketShare) / marketShares[index - 1].marketShare) * 100;
                         
-                        {/* Sirius AG Row */}
-                        <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
-                          <td className="p-1 sm:p-2 rounded-l-lg font-medium text-green-300 text-xs sm:text-base">{t.siriusRevenueMio}</td>
-                          {marketShares.map((row) => (
-                            <td key={row.halbjahr} className="p-1 sm:p-2 text-center text-xs sm:text-base">{row.sirius.toFixed(1)}</td>
-                          ))}
-                        </tr>
-                        
-                        {/* Marktanteil Row */}
-                        <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
-                          <td className="p-1 sm:p-2 rounded-l-lg font-medium text-green-300 text-xs sm:text-base">{t.marketSharePercent}</td>
-                          {marketShares.map((row) => (
-                            <td 
-                              key={row.halbjahr} 
-                              className={`p-1 sm:p-2 text-center font-bold text-xs sm:text-base ${
-                                (showSolutionA && row.halbjahr === maxShare.halbjahr) 
-                                  ? "bg-green-900/60 text-green-200 shadow-lg rounded" 
-                                  : ""
-                              }`}
-                            >
-                              {row.marketShare.toFixed(2)}
-                            </td>
-                          ))}
-                        </tr>
-                        
-                        {/* Anstieg Row */}
-                        <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
-                          <td className="p-1 sm:p-2 rounded-l-lg font-medium text-green-300 text-xs sm:text-base">{t.increasePercent}</td>
-                          {marketShares.map((row, index) => {
-                            const percentageIncrease = index === 0 ? null : 
-                              ((row.marketShare - marketShares[index - 1].marketShare) / marketShares[index - 1].marketShare) * 100;
-                            
-                            return (
+                        return (
+                          <div key={row.halbjahr} className="bg-gray-800/60 rounded-lg p-3 border border-gray-700">
+                            <h4 className="text-green-400 font-bold text-sm mb-3 text-center">
+                              {translatePeriod(row.halbjahr, t)}
+                            </h4>
+                            <div className="space-y-2">
+                              <div className="flex justify-between items-center">
+                                <span className="text-green-300 text-xs font-medium">{t.industryRevenueMio}</span>
+                                <span className="text-white text-xs">{row.branche.toFixed(1)}</span>
+                              </div>
+                              <div className="flex justify-between items-center">
+                                <span className="text-green-300 text-xs font-medium">{t.siriusRevenueMio}</span>
+                                <span className="text-white text-xs">{row.sirius.toFixed(1)}</span>
+                              </div>
+                              <div className="flex justify-between items-center">
+                                <span className="text-green-300 text-xs font-medium">{t.marketSharePercent}</span>
+                                <span className={`text-xs font-bold ${
+                                  (showSolutionA && row.halbjahr === maxShare.halbjahr) 
+                                    ? "bg-green-900/60 text-green-200 px-2 py-1 rounded" 
+                                    : "text-white"
+                                }`}>
+                                  {row.marketShare.toFixed(2)}
+                                </span>
+                              </div>
+                              <div className="flex justify-between items-center">
+                                <span className="text-green-300 text-xs font-medium">{t.increasePercent}</span>
+                                <span className={`text-xs ${
+                                  (showSolutionB && maxInc.to && row.halbjahr === maxInc.to.halbjahr)
+                                    ? "bg-yellow-900/60 text-yellow-200 font-bold px-2 py-1 rounded"
+                                    : ""
+                                }`}>
+                                  {percentageIncrease === null ? 
+                                    <span className="text-gray-500">—</span> : 
+                                    <span className={`font-bold ${percentageIncrease >= 0 ? "text-green-400" : "text-red-400"}`}>
+                                      {percentageIncrease >= 0 ? "+" : ""}{percentageIncrease.toFixed(2)}%
+                                    </span>
+                                  }
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    
+                    {/* Desktop Table Layout */}
+                    <div className="hidden sm:block overflow-x-auto">
+                      <table className="w-full text-gray-200 border-separate border-spacing-y-1 sm:border-spacing-y-2">
+                        <thead>
+                          <tr className="text-green-400 text-sm sm:text-lg">
+                            <th className="p-2 text-left text-base">{t.dataType}</th>
+                            {marketShares.map((row) => (
+                              <th key={row.halbjahr} className="p-2 text-center text-base">{translatePeriod(row.halbjahr, t)}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {/* Branche Row */}
+                          <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
+                            <td className="p-2 rounded-l-lg font-medium text-green-300 text-base">{t.industryRevenueMio}</td>
+                            {marketShares.map((row) => (
+                              <td key={row.halbjahr} className="p-2 text-center text-base">{row.branche.toFixed(1)}</td>
+                            ))}
+                          </tr>
+                          
+                          {/* Sirius AG Row */}
+                          <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
+                            <td className="p-2 rounded-l-lg font-medium text-green-300 text-base">{t.siriusRevenueMio}</td>
+                            {marketShares.map((row) => (
+                              <td key={row.halbjahr} className="p-2 text-center text-base">{row.sirius.toFixed(1)}</td>
+                            ))}
+                          </tr>
+                          
+                          {/* Marktanteil Row */}
+                          <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
+                            <td className="p-2 rounded-l-lg font-medium text-green-300 text-base">{t.marketSharePercent}</td>
+                            {marketShares.map((row) => (
                               <td 
                                 key={row.halbjahr} 
-                                className={`p-1 sm:p-2 text-center text-xs sm:text-base ${
-                                  (showSolutionB && maxInc.to && row.halbjahr === maxInc.to.halbjahr)
-                                    ? "bg-yellow-900/60 text-yellow-200 font-bold shadow-lg rounded"
+                                className={`p-2 text-center font-bold text-base ${
+                                  (showSolutionA && row.halbjahr === maxShare.halbjahr) 
+                                    ? "bg-green-900/60 text-green-200 shadow-lg rounded" 
                                     : ""
                                 }`}
                               >
-                                {percentageIncrease === null ? 
-                                  <span className="text-gray-500">—</span> : 
-                                  <span className={`font-bold ${percentageIncrease >= 0 ? "text-green-400" : "text-red-400"}`}>
-                                    {percentageIncrease >= 0 ? "+" : ""}{percentageIncrease.toFixed(2)}%
-                                  </span>
-                                }
+                                {row.marketShare.toFixed(2)}
                               </td>
-                            );
-                          })}
-                        </tr>
-                      </tbody>
-                    </table>
+                            ))}
+                          </tr>
+                          
+                          {/* Anstieg Row */}
+                          <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
+                            <td className="p-2 rounded-l-lg font-medium text-green-300 text-base">{t.increasePercent}</td>
+                            {marketShares.map((row, index) => {
+                              const percentageIncrease = index === 0 ? null : 
+                                ((row.marketShare - marketShares[index - 1].marketShare) / marketShares[index - 1].marketShare) * 100;
+                              
+                              return (
+                                <td 
+                                  key={row.halbjahr} 
+                                  className={`p-2 text-center text-base ${
+                                    (showSolutionB && maxInc.to && row.halbjahr === maxInc.to.halbjahr)
+                                      ? "bg-yellow-900/60 text-yellow-200 font-bold shadow-lg rounded"
+                                      : ""
+                                  }`}
+                                >
+                                  {percentageIncrease === null ? 
+                                    <span className="text-gray-500">—</span> : 
+                                    <span className={`font-bold ${percentageIncrease >= 0 ? "text-green-400" : "text-red-400"}`}>
+                                      {percentageIncrease >= 0 ? "+" : ""}{percentageIncrease.toFixed(2)}%
+                                    </span>
+                                  }
+                                </td>
+                              );
+                            })}
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                   
                   <div className="bg-blue-900/30 rounded-lg p-3 sm:p-4 border-l-4 border-blue-500">
@@ -3643,52 +3697,100 @@ export default function SiriusMarketShare() {
                       </div>
                     </div>
                     
-                    {/* Mobile-optimized table */}
-                    <div className="min-w-max">
-                      <table className="w-full border-collapse border border-gray-600 rounded-lg overflow-hidden">
-                        <thead>
-                          <tr className="bg-blue-800/50">
-                            <th className="border border-gray-600 px-2 sm:px-4 py-2 sm:py-3 text-blue-200 font-[Tektur,monospace] text-xs sm:text-sm">{t.customer}</th>
-                            <th className="border border-gray-600 px-2 sm:px-4 py-2 sm:py-3 text-blue-200 font-[Tektur,monospace] text-xs sm:text-sm">{t.function}</th>
-                            <th className="border border-gray-600 px-2 sm:px-4 py-2 sm:py-3 text-blue-200 font-[Tektur,monospace] text-xs sm:text-sm">{t.performance}</th>
-                            <th className="border border-gray-600 px-2 sm:px-4 py-2 sm:py-3 text-blue-200 font-[Tektur,monospace] text-xs sm:text-sm">{t.eco}</th>
-                            <th className="border border-gray-600 px-2 sm:px-4 py-2 sm:py-3 text-blue-200 font-[Tektur,monospace] text-xs sm:text-sm">{t.price}</th>
-                            <th className="border border-gray-600 px-2 sm:px-4 py-2 sm:py-3 text-green-300 font-[Tektur,monospace] text-xs sm:text-sm">{t.average}</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {calculateCustomerAverages().map((customer, index) => (
-                            <tr key={customer.kunde} className={index % 2 === 0 ? "bg-gray-800/50" : "bg-gray-900/50"}>
-                              <td className="border border-gray-600 px-2 sm:px-4 py-2 sm:py-3 text-white font-bold font-[Tektur,monospace] text-xs sm:text-sm">{customer.kunde}</td>
-                              <td className="border border-gray-600 px-1 sm:px-2 py-2 sm:py-3 text-center font-[Tektur,monospace]">
-                                <span className={`px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-lg font-bold text-xs sm:text-sm ${getGradeColor(customer.funktion)}`}>
+                    {/* Mobile-first responsive customer table */}
+                    <div>
+                      {/* Mobile Card Layout */}
+                      <div className="block sm:hidden space-y-3">
+                        {calculateCustomerAverages().map((customer, index) => (
+                          <div key={customer.kunde} className={`rounded-lg p-3 border border-gray-600 ${
+                            index % 2 === 0 ? "bg-gray-800/50" : "bg-gray-900/50"
+                          }`}>
+                            <h4 className="text-blue-200 font-bold text-sm mb-3 text-center font-[Tektur,monospace]">
+                              {customer.kunde}
+                            </h4>
+                            <div className="space-y-2">
+                              <div className="flex justify-between items-center">
+                                <span className="text-blue-200 text-xs font-medium font-[Tektur,monospace]">{t.function}</span>
+                                <span className={`px-2 py-1 rounded font-bold text-xs ${getGradeColor(customer.funktion)} font-[Tektur,monospace]`}>
                                   {customer.funktion}
                                 </span>
-                              </td>
-                              <td className="border border-gray-600 px-1 sm:px-2 py-2 sm:py-3 text-center font-[Tektur,monospace]">
-                                <span className={`px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-lg font-bold text-xs sm:text-sm ${getGradeColor(customer.leistung)}`}>
+                              </div>
+                              <div className="flex justify-between items-center">
+                                <span className="text-blue-200 text-xs font-medium font-[Tektur,monospace]">{t.performance}</span>
+                                <span className={`px-2 py-1 rounded font-bold text-xs ${getGradeColor(customer.leistung)} font-[Tektur,monospace]`}>
                                   {customer.leistung}
                                 </span>
-                              </td>
-                              <td className="border border-gray-600 px-1 sm:px-2 py-2 sm:py-3 text-center font-[Tektur,monospace]">
-                                <span className={`px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-lg font-bold text-xs sm:text-sm ${getGradeColor(customer.oeko)}`}>
+                              </div>
+                              <div className="flex justify-between items-center">
+                                <span className="text-blue-200 text-xs font-medium font-[Tektur,monospace]">{t.eco}</span>
+                                <span className={`px-2 py-1 rounded font-bold text-xs ${getGradeColor(customer.oeko)} font-[Tektur,monospace]`}>
                                   {customer.oeko}
                                 </span>
-                              </td>
-                              <td className="border border-gray-600 px-1 sm:px-2 py-2 sm:py-3 text-center font-[Tektur,monospace]">
-                                <span className={`px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-lg font-bold text-xs sm:text-sm ${getGradeColor(customer.preis)}`}>
+                              </div>
+                              <div className="flex justify-between items-center">
+                                <span className="text-blue-200 text-xs font-medium font-[Tektur,monospace]">{t.price}</span>
+                                <span className={`px-2 py-1 rounded font-bold text-xs ${getGradeColor(customer.preis)} font-[Tektur,monospace]`}>
                                   {customer.preis}
                                 </span>
-                              </td>
-                              <td className="border border-gray-600 px-1 sm:px-2 py-2 sm:py-3 text-center font-[Tektur,monospace]">
-                                <span className={`px-1.5 sm:px-3 py-0.5 sm:py-2 rounded-lg font-bold text-xs sm:text-sm ${getAverageGradeColor(customer.durchschnitt!)}`}>
+                              </div>
+                              <div className="flex justify-between items-center border-t border-gray-600 pt-2">
+                                <span className="text-green-300 text-xs font-bold font-[Tektur,monospace]">{t.average}</span>
+                                <span className={`px-2 py-1 rounded font-bold text-xs ${getAverageGradeColor(customer.durchschnitt!)} font-[Tektur,monospace]`}>
                                   {customer.durchschnitt?.toFixed(2)}
                                 </span>
-                              </td>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      {/* Desktop Table Layout */}
+                      <div className="hidden sm:block overflow-x-auto">
+                        <table className="w-full border-collapse border border-gray-600 rounded-lg overflow-hidden">
+                          <thead>
+                            <tr className="bg-blue-800/50">
+                              <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace] text-sm">{t.customer}</th>
+                              <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace] text-sm">{t.function}</th>
+                              <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace] text-sm">{t.performance}</th>
+                              <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace] text-sm">{t.eco}</th>
+                              <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace] text-sm">{t.price}</th>
+                              <th className="border border-gray-600 px-4 py-3 text-green-300 font-[Tektur,monospace] text-sm">{t.average}</th>
                             </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                          </thead>
+                          <tbody>
+                            {calculateCustomerAverages().map((customer, index) => (
+                              <tr key={customer.kunde} className={index % 2 === 0 ? "bg-gray-800/50" : "bg-gray-900/50"}>
+                                <td className="border border-gray-600 px-4 py-3 text-white font-bold font-[Tektur,monospace] text-sm">{customer.kunde}</td>
+                                <td className="border border-gray-600 px-2 py-3 text-center font-[Tektur,monospace]">
+                                  <span className={`px-3 py-1 rounded-lg font-bold text-sm ${getGradeColor(customer.funktion)}`}>
+                                    {customer.funktion}
+                                  </span>
+                                </td>
+                                <td className="border border-gray-600 px-2 py-3 text-center font-[Tektur,monospace]">
+                                  <span className={`px-3 py-1 rounded-lg font-bold text-sm ${getGradeColor(customer.leistung)}`}>
+                                    {customer.leistung}
+                                  </span>
+                                </td>
+                                <td className="border border-gray-600 px-2 py-3 text-center font-[Tektur,monospace]">
+                                  <span className={`px-3 py-1 rounded-lg font-bold text-sm ${getGradeColor(customer.oeko)}`}>
+                                    {customer.oeko}
+                                  </span>
+                                </td>
+                                <td className="border border-gray-600 px-2 py-3 text-center font-[Tektur,monospace]">
+                                  <span className={`px-3 py-1 rounded-lg font-bold text-sm ${getGradeColor(customer.preis)}`}>
+                                    {customer.preis}
+                                  </span>
+                                </td>
+                                <td className="border border-gray-600 px-2 py-3 text-center font-[Tektur,monospace]">
+                                  <span className={`px-3 py-2 rounded-lg font-bold text-sm ${getAverageGradeColor(customer.durchschnitt!)}`}>
+                                    {customer.durchschnitt?.toFixed(2)}
+                                  </span>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 )}
