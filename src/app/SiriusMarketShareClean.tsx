@@ -2954,29 +2954,29 @@ export default function SiriusMarketShare() {
           font-family: 'Tektur', monospace !important;
         }
       `}</style>
-      <div className={`min-h-screen flex flex-col p-6 transition-colors duration-300 ${
+      <div className={`min-h-screen flex flex-col p-3 sm:p-6 transition-colors duration-300 ${
         isDark 
           ? 'bg-gradient-to-br from-black via-gray-900 to-green-900' 
           : 'bg-gradient-to-br from-slate-50 via-gray-100 to-blue-50'
       }`} style={{fontFamily: 'Tektur, monospace'}}>
         
         {/* Header Controls */}
-        <div className="fixed top-4 right-4 flex gap-2 z-50">
+        <div className="fixed top-2 right-2 sm:top-4 sm:right-4 flex gap-1 sm:gap-2 z-50">
           {/* Language Selector */}
           <div className="relative group">
-            <button className={`p-2 rounded-lg transition-colors ${
+            <button className={`p-1.5 sm:p-2 rounded-lg transition-colors text-sm sm:text-base ${
               isDark 
                 ? 'bg-gray-900 hover:bg-gray-800 text-green-400 border border-green-700' 
                 : 'bg-white hover:bg-gray-50 text-slate-800 border border-gray-200'
             } shadow-lg`}>
               🌐
             </button>
-            <div className={`absolute right-0 top-12 rounded-lg shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ${
+            <div className={`absolute right-0 top-10 sm:top-12 rounded-lg shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ${
               isDark 
                 ? 'bg-gray-900 border-green-700' 
                 : 'bg-white border-gray-200'
             }`}>
-              <div className="p-2 min-w-48">
+              <div className="p-2 min-w-32 sm:min-w-48">
                 <div className={`text-xs font-semibold mb-2 px-2 ${isDark ? 'text-green-400' : 'text-slate-600'}`}>
                   {t.language}
                 </div>
@@ -2984,7 +2984,7 @@ export default function SiriusMarketShare() {
                   <button
                     key={code}
                     onClick={() => setLanguage(code as Language)}
-                    className={`w-full text-left px-2 py-1 rounded text-sm transition-colors ${
+                    className={`w-full text-left px-2 py-1 rounded text-xs sm:text-sm transition-colors ${
                       language === code
                         ? isDark ? 'bg-green-700 text-green-100' : 'bg-blue-100 text-blue-800'
                         : isDark ? 'hover:bg-gray-800 text-gray-300' : 'hover:bg-gray-100 text-slate-700'
@@ -2999,19 +2999,19 @@ export default function SiriusMarketShare() {
 
           {/* Theme Selector */}
           <div className="relative group">
-            <button className={`p-2 rounded-lg transition-colors ${
+            <button className={`p-1.5 sm:p-2 rounded-lg transition-colors text-sm sm:text-base ${
               isDark 
                 ? 'bg-gray-900 hover:bg-gray-800 text-green-400 border border-green-700' 
                 : 'bg-white hover:bg-gray-50 text-slate-800 border border-gray-200'
             } shadow-lg`}>
               {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '💻'}
             </button>
-            <div className={`absolute right-0 top-12 rounded-lg shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ${
+            <div className={`absolute right-0 top-10 sm:top-12 rounded-lg shadow-xl border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ${
               isDark 
                 ? 'bg-gray-900 border-green-700' 
                 : 'bg-white border-gray-200'
             }`}>
-              <div className="p-2 min-w-32">
+              <div className="p-2 min-w-24 sm:min-w-32">
                 <div className={`text-xs font-semibold mb-2 px-2 ${isDark ? 'text-green-400' : 'text-slate-600'}`}>
                   {t.theme}
                 </div>
@@ -3019,7 +3019,7 @@ export default function SiriusMarketShare() {
                   <button
                     key={themeOption}
                     onClick={() => setTheme(themeOption)}
-                    className={`w-full text-left px-2 py-1 rounded text-sm transition-colors flex items-center gap-2 ${
+                    className={`w-full text-left px-2 py-1 rounded text-xs sm:text-sm transition-colors flex items-center gap-1 sm:gap-2 ${
                       theme === themeOption
                         ? isDark ? 'bg-green-700 text-green-100' : 'bg-blue-100 text-blue-800'
                         : isDark ? 'hover:bg-gray-800 text-gray-300' : 'hover:bg-gray-100 text-slate-700'
@@ -3034,8 +3034,8 @@ export default function SiriusMarketShare() {
           </div>
         </div>
 
-        <div className="flex-1 flex flex-col items-center justify-center">
-          <h1 className={`text-4xl font-bold mb-8 font-[Tektur,monospace] tracking-wide ${
+        <div className="flex-1 flex flex-col items-center justify-center px-2 sm:px-0">
+          <h1 className={`text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 font-[Tektur,monospace] tracking-wide text-center ${
             isDark ? 'text-green-400' : 'text-slate-800'
           }`} style={{fontFamily: 'Tektur, monospace'}}>
             {translatedTitle}
@@ -3043,45 +3043,45 @@ export default function SiriusMarketShare() {
         
           {/* Main Menu */}
           {!currentExercise && (
-            <div className={`rounded-xl shadow-xl p-8 w-full max-w-5xl border transition-colors ${
+            <div className={`rounded-xl shadow-xl p-4 sm:p-6 lg:p-8 w-full max-w-xs sm:max-w-2xl lg:max-w-5xl border transition-colors ${
               isDark 
                 ? 'bg-gray-950/90 border-green-800' 
                 : 'bg-white border-gray-200'
             }`} style={{fontFamily: 'Tektur, monospace'}}>
-              <h2 className={`text-2xl font-semibold mb-8 text-center font-[Tektur,monospace] ${
+              <h2 className={`text-lg sm:text-xl lg:text-2xl font-semibold mb-6 sm:mb-8 text-center font-[Tektur,monospace] ${
                 isDark ? 'text-green-400' : 'text-slate-700'
               }`}>{t.availableExercises}</h2>
               
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 {/* Exercise 1 - Sirius AG */}
-                <div className={`border rounded-lg p-6 hover:shadow-lg transition-all duration-300 ${
+                <div className={`border rounded-lg p-4 sm:p-6 hover:shadow-lg transition-all duration-300 ${
                   isDark 
                     ? 'bg-gradient-to-br from-gray-900/80 to-gray-800/80 border-green-700 hover:border-green-600' 
                     : 'bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 hover:border-blue-300'
                 }`}>
-                  <h3 className={`text-xl font-semibold mb-3 font-[Tektur,monospace] ${
+                  <h3 className={`text-lg sm:text-xl font-semibold mb-2 sm:mb-3 font-[Tektur,monospace] ${
                     isDark ? 'text-green-400' : 'text-blue-800'
                   }`}>{t.exercise1}</h3>
-                  <h4 className={`text-lg mb-3 font-[Tektur,monospace] ${
+                  <h4 className={`text-base sm:text-lg mb-2 sm:mb-3 font-[Tektur,monospace] ${
                     isDark ? 'text-green-300' : 'text-blue-700'
                   }`}>{t.exercise1Title}</h4>
                   <p className={`mb-4 text-sm leading-relaxed ${
                     isDark ? 'text-gray-300' : 'text-slate-600'
                   }`}>{t.exercise1Desc}</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6">
+                    <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
                       isDark ? 'bg-green-800/50 text-green-300' : 'bg-blue-200 text-blue-800'
                     }`}>{t.marketAnalysis}</span>
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
                       isDark ? 'bg-green-800/50 text-green-300' : 'bg-blue-200 text-blue-800'
                     }`}>{t.percentageCalculation}</span>
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
                       isDark ? 'bg-green-800/50 text-green-300' : 'bg-blue-200 text-blue-800'
                     }`}>{t.trendCalculation}</span>
                   </div>
                   <button
                     onClick={() => setCurrentExercise('sirius')}
-                    className={`w-full font-semibold py-3 px-4 rounded-lg transition-all duration-200 font-[Tektur,monospace] shadow-sm ${
+                    className={`w-full font-semibold py-2 sm:py-3 px-3 sm:px-4 rounded-lg transition-all duration-200 font-[Tektur,monospace] shadow-sm text-sm sm:text-base ${
                       isDark 
                         ? 'bg-green-700 hover:bg-green-600 text-black' 
                         : 'bg-blue-600 hover:bg-blue-700 text-white'
@@ -3093,34 +3093,34 @@ export default function SiriusMarketShare() {
                 </div>
                 
                 {/* Exercise 2 - Customer Survey */}
-                <div className={`border rounded-lg p-6 hover:shadow-lg transition-all duration-300 ${
+                <div className={`border rounded-lg p-4 sm:p-6 hover:shadow-lg transition-all duration-300 ${
                   isDark 
                     ? 'bg-gradient-to-br from-gray-900/80 to-gray-800/80 border-green-700 hover:border-green-600' 
                     : 'bg-gradient-to-br from-emerald-50 to-emerald-100 border-emerald-200 hover:border-emerald-300'
                 }`}>
-                  <h3 className={`text-xl font-semibold mb-3 font-[Tektur,monospace] ${
+                  <h3 className={`text-lg sm:text-xl font-semibold mb-2 sm:mb-3 font-[Tektur,monospace] ${
                     isDark ? 'text-green-400' : 'text-emerald-800'
                   }`}>{t.exercise2}</h3>
-                  <h4 className={`text-lg mb-3 font-[Tektur,monospace] ${
+                  <h4 className={`text-base sm:text-lg mb-2 sm:mb-3 font-[Tektur,monospace] ${
                     isDark ? 'text-green-300' : 'text-emerald-700'
                   }`}>{t.exercise2Title}</h4>
                   <p className={`mb-4 text-sm leading-relaxed ${
                     isDark ? 'text-gray-300' : 'text-slate-600'
                   }`}>{t.exercise2Desc}</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6">
+                    <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
                       isDark ? 'bg-green-800/50 text-green-300' : 'bg-emerald-200 text-emerald-800'
                     }`}>{t.customerSatisfaction}</span>
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
                       isDark ? 'bg-green-800/50 text-green-300' : 'bg-emerald-200 text-emerald-800'
                     }`}>{t.statistics}</span>
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
                       isDark ? 'bg-green-800/50 text-green-300' : 'bg-emerald-200 text-emerald-800'
                     }`}>{t.averageValues}</span>
                   </div>
                   <button
                     onClick={() => setCurrentExercise('customer')}
-                    className={`w-full font-semibold py-3 px-4 rounded-lg transition-all duration-200 font-[Tektur,monospace] shadow-sm ${
+                    className={`w-full font-semibold py-2 sm:py-3 px-3 sm:px-4 rounded-lg transition-all duration-200 font-[Tektur,monospace] shadow-sm text-sm sm:text-base ${
                       isDark 
                         ? 'bg-green-700 hover:bg-green-600 text-black' 
                         : 'bg-emerald-600 hover:bg-emerald-700 text-white'
@@ -3132,24 +3132,24 @@ export default function SiriusMarketShare() {
                 </div>
               </div>
               
-              <div className="mt-8 text-center">
-                <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-slate-500'}`}>{t.selectExercise}</p>
+              <div className="mt-6 sm:mt-8 text-center">
+                <p className={`text-xs sm:text-sm ${isDark ? 'text-gray-400' : 'text-slate-500'}`}>{t.selectExercise}</p>
               </div>
             </div>
           )}
 
         {/* Exercise 1 - Sirius AG */}
         {currentExercise === 'sirius' && (
-          <div className={`rounded-xl shadow-xl p-8 w-full max-w-6xl border transition-colors ${
+          <div className={`rounded-xl shadow-xl p-4 sm:p-6 lg:p-8 w-full max-w-xs sm:max-w-4xl lg:max-w-6xl border transition-colors ${
             isDark 
               ? 'bg-gray-950/90 border-green-800' 
               : 'bg-white border-gray-200'
           }`} style={{fontFamily: 'Tektur, monospace'}}>
             {/* Back to Menu Button */}
-            <div className="mb-6">
+            <div className="mb-4 sm:mb-6">
               <button
                 onClick={resetToMenu}
-                className={`font-semibold py-2 px-4 rounded-lg transition-all duration-200 font-[Tektur,monospace] shadow-sm ${
+                className={`font-semibold py-1.5 sm:py-2 px-3 sm:px-4 rounded-lg transition-all duration-200 font-[Tektur,monospace] shadow-sm text-sm sm:text-base ${
                   isDark 
                     ? 'bg-gray-800 hover:bg-gray-700 text-green-400 border border-green-700' 
                     : 'bg-slate-600 hover:bg-slate-700 text-white'
@@ -3160,16 +3160,16 @@ export default function SiriusMarketShare() {
               </button>
             </div>
             
-            <h2 className={`text-3xl font-semibold mb-8 text-center font-[Tektur,monospace] ${
+            <h2 className={`text-xl sm:text-2xl lg:text-3xl font-semibold mb-6 sm:mb-8 text-center font-[Tektur,monospace] ${
               isDark ? 'text-green-400' : 'text-slate-800'
             }`}>{t.exercise1Title}</h2>
 
             {/* Introduction and Problem Statement */}
-          <div className="mb-8">
-            <div className="text-center mb-6">
+          <div className="mb-6 sm:mb-8">
+            <div className="text-center mb-4 sm:mb-6">
               <button
                 onClick={() => setShowProblem(!showProblem)}
-                className={`font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-sm font-[Tektur,monospace] ${
+                className={`font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-all duration-200 shadow-sm font-[Tektur,monospace] text-sm sm:text-base ${
                   isDark 
                     ? 'bg-green-700 hover:bg-green-600 text-black' 
                     : 'bg-blue-600 hover:bg-blue-700 text-white'
@@ -3181,55 +3181,57 @@ export default function SiriusMarketShare() {
             </div>
             
             {showProblem && (
-              <div className={`border rounded-xl p-6 mb-6 transition-colors ${
+              <div className={`border rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 transition-colors ${
                 isDark 
                   ? 'bg-gray-900/50 border-green-700' 
                   : 'bg-blue-50 border-blue-200'
               }`}>
-                <h3 className={`text-xl font-semibold mb-4 font-[Tektur,monospace] ${
+                <h3 className={`text-lg sm:text-xl font-semibold mb-3 sm:mb-4 font-[Tektur,monospace] ${
                   isDark ? 'text-green-400' : 'text-blue-800'
                 }`}>{t.taskStatement}</h3>
-                <div className={`rounded-lg p-4 leading-relaxed shadow-sm ${
+                <div className={`rounded-lg p-3 sm:p-4 leading-relaxed shadow-sm ${
                   isDark ? 'bg-gray-950/70 text-gray-300' : 'bg-white text-slate-700'
                 }`}>
-                  <p className="mb-4">
+                  <p className="mb-3 sm:mb-4 text-sm sm:text-base">
                     <strong>{t.siriusTask}</strong>
                   </p>
-                  <p className="mb-4">{t.dataAvailable}</p>
+                  <p className="mb-3 sm:mb-4 text-sm sm:text-base">{t.dataAvailable}</p>
                   
-                  <div className={`rounded p-3 mb-4 font-mono text-sm ${
+                  <div className={`rounded p-2 sm:p-3 mb-3 sm:mb-4 font-mono text-xs sm:text-sm overflow-x-auto ${
                     isDark ? 'bg-black/50' : 'bg-gray-900/80'
                   }`}>
-                    <div className="grid grid-cols-3 gap-4 text-center">
-                      <div className="text-green-400 font-semibold">{t.period}</div>
-                      <div className="text-green-400 font-semibold">{t.industry}</div>
-                      <div className="text-green-400 font-semibold">{t.sirius}</div>
-                      {data.map((row) => (
-                        <React.Fragment key={row.halbjahr}>
-                          <div className="text-green-300">{translatePeriod(row.halbjahr, t)}</div>
-                          <div className="text-green-300">{row.branche}</div>
-                          <div className="text-green-300">{row.sirius}</div>
-                        </React.Fragment>
-                      ))}
+                    <div className="min-w-max">
+                      <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center">
+                        <div className="text-green-400 font-semibold">{t.period}</div>
+                        <div className="text-green-400 font-semibold">{t.industry}</div>
+                        <div className="text-green-400 font-semibold">{t.sirius}</div>
+                        {data.map((row) => (
+                          <React.Fragment key={row.halbjahr}>
+                            <div className="text-green-300">{translatePeriod(row.halbjahr, t)}</div>
+                            <div className="text-green-300">{row.branche}</div>
+                            <div className="text-green-300">{row.sirius}</div>
+                          </React.Fragment>
+                        ))}
+                      </div>
                     </div>
                   </div>
                   
-                  <div className="space-y-3">
-                    <div className={`border-l-4 pl-4 ${
+                  <div className="space-y-2 sm:space-y-3">
+                    <div className={`border-l-4 pl-3 sm:pl-4 ${
                       isDark 
                         ? 'bg-yellow-900/20 border-yellow-400' 
                         : 'bg-yellow-900/30 border-yellow-500'
                     }`}>
-                      <strong className={`${isDark ? 'text-yellow-400' : 'text-yellow-300'}`}>{t.taskLabelA}</strong>
-                      <p className={isDark ? 'text-gray-300' : 'text-gray-700'}>{t.taskA}</p>
+                      <strong className={`text-sm sm:text-base ${isDark ? 'text-yellow-400' : 'text-yellow-300'}`}>{t.taskLabelA}</strong>
+                      <p className={`text-xs sm:text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>{t.taskA}</p>
                     </div>
-                    <div className={`border-l-4 pl-4 ${
+                    <div className={`border-l-4 pl-3 sm:pl-4 ${
                       isDark 
                         ? 'bg-yellow-900/20 border-yellow-400' 
                         : 'bg-yellow-900/30 border-yellow-500'
                     }`}>
-                      <strong className={`${isDark ? 'text-yellow-400' : 'text-yellow-300'}`}>{t.taskLabelB}</strong>
-                      <p className={isDark ? 'text-gray-300' : 'text-gray-700'}>{t.taskB}</p>
+                      <strong className={`text-sm sm:text-base ${isDark ? 'text-yellow-400' : 'text-yellow-300'}`}>{t.taskLabelB}</strong>
+                      <p className={`text-xs sm:text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>{t.taskB}</p>
                     </div>
                   </div>
                 </div>
@@ -3239,11 +3241,11 @@ export default function SiriusMarketShare() {
 
           {/* Data Table - Always visible when problem is shown */}
           {showProblem && (
-            <div className="mb-8">
-              <div className="text-center mb-6">
+            <div className="mb-6 sm:mb-8">
+              <div className="text-center mb-4 sm:mb-6">
                 <button
                   onClick={() => setShowCalculatedTable(!showCalculatedTable)}
-                  className="bg-slate-600 hover:bg-slate-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-sm font-[Tektur,monospace]"
+                  className="bg-slate-600 hover:bg-slate-700 text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-all duration-200 shadow-sm font-[Tektur,monospace] text-sm sm:text-base"
                   style={{fontFamily: 'Tektur, monospace'}}
                 >
                   {showCalculatedTable ? t.hideCalculatedShares : t.showCalculatedShares}
@@ -3251,120 +3253,123 @@ export default function SiriusMarketShare() {
               </div>
               
               {showCalculatedTable && (
-                <div className={`border rounded-xl p-6 ${
+                <div className={`border rounded-xl p-3 sm:p-4 lg:p-6 ${
                   isDark ? 'bg-slate-800/60 border-slate-600' : 'bg-slate-50 border-slate-200'
                 }`}>
-                  <h3 className={`text-xl font-semibold mb-4 font-[Tektur,monospace] ${
+                  <h3 className={`text-lg sm:text-xl font-semibold mb-3 sm:mb-4 font-[Tektur,monospace] ${
                     isDark ? 'text-slate-200' : 'text-slate-800'
                   }`}>{t.calculatedShares}</h3>
                   
-                  <div className={`rounded-lg p-4 mb-6 shadow-sm ${
+                  <div className={`rounded-lg p-3 sm:p-4 mb-4 sm:mb-6 shadow-sm ${
                     isDark ? 'bg-gray-950/50 text-gray-300' : 'bg-white text-slate-700'
                   }`}>
-                    <h4 className={`font-semibold mb-3 ${
+                    <h4 className={`font-semibold mb-2 sm:mb-3 text-sm sm:text-base ${
                       isDark ? 'text-gray-200' : 'text-slate-700'
                     }`}>
                       {t.calculationBasis}
                     </h4>
-                    <div className={`space-y-3 ${
+                    <div className={`space-y-2 sm:space-y-3 text-xs sm:text-sm ${
                       isDark ? 'text-gray-300' : 'text-slate-600'
                     }`}>
-                      <p><strong>{t.basicFormula}</strong></p>
-                      <div className={`p-3 rounded font-mono text-center border ${
+                      <p className="text-sm sm:text-base"><strong>{t.basicFormula}</strong></p>
+                      <div className={`p-2 sm:p-3 rounded font-mono text-center border text-xs sm:text-sm ${
                         isDark ? 'bg-blue-900/30 border-blue-700 text-blue-300' : 'bg-blue-50 border-blue-200 text-blue-800'
                       }`}>
                         <span>{t.basicFormulaText}</span>
                       </div>
-                      <p><strong>{t.exampleCalc}</strong></p>
-                      <div className={`p-3 rounded font-mono border ${
+                      <p className="text-sm sm:text-base"><strong>{t.exampleCalc}</strong></p>
+                      <div className={`p-2 sm:p-3 rounded font-mono border text-xs sm:text-sm ${
                         isDark ? 'bg-slate-800/50 border-slate-600 text-gray-300' : 'bg-slate-50 border-slate-300 text-slate-700'
                       }`}>
                         <div>{t.siriusRevenue}: 1.6 Mio €</div>
                         <div>{t.industryRevenue}: 20.0 Mio €</div>
-                        <div className="text-green-400 mt-2">{t.marketShareTerm} = (1.6 / 20.0) × 100 = 8.00%</div>
+                        <div className="text-green-400 mt-1 sm:mt-2">{t.marketShareTerm} = (1.6 / 20.0) × 100 = 8.00%</div>
                       </div>
-                      <p><strong>{t.calculateIncrease}:</strong></p>
-                      <div className="bg-gray-700 p-3 rounded font-mono">
+                      <p className="text-sm sm:text-base"><strong>{t.calculateIncrease}:</strong></p>
+                      <div className="bg-gray-700 p-2 sm:p-3 rounded font-mono text-xs sm:text-sm">
                         <span className="text-yellow-400">{t.percentageIncreaseFormula2}</span>
                       </div>
                     </div>
                   </div>
                   
-                  <table className="w-full mb-8 text-gray-200 border-separate border-spacing-y-2">
-                    <thead>
-                      <tr className="text-green-400 text-lg">
-                        <th className="p-2 text-left">{t.dataType}</th>
-                        {marketShares.map((row) => (
-                          <th key={row.halbjahr} className="p-2 text-center">{translatePeriod(row.halbjahr, t)}</th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {/* Branche Row */}
-                      <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
-                        <td className="p-2 rounded-l-lg font-medium text-green-300">{t.industryRevenueMio}</td>
-                        {marketShares.map((row) => (
-                          <td key={row.halbjahr} className="p-2 text-center">{row.branche.toFixed(1)}</td>
-                        ))}
-                      </tr>
-                      
-                      {/* Sirius AG Row */}
-                      <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
-                        <td className="p-2 rounded-l-lg font-medium text-green-300">{t.siriusRevenueMio}</td>
-                        {marketShares.map((row) => (
-                          <td key={row.halbjahr} className="p-2 text-center">{row.sirius.toFixed(1)}</td>
-                        ))}
-                      </tr>
-                      
-                      {/* Marktanteil Row */}
-                      <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
-                        <td className="p-2 rounded-l-lg font-medium text-green-300">{t.marketSharePercent}</td>
-                        {marketShares.map((row) => (
-                          <td 
-                            key={row.halbjahr} 
-                            className={`p-2 text-center font-bold ${
-                              (showSolutionA && row.halbjahr === maxShare.halbjahr) 
-                                ? "bg-green-900/60 text-green-200 shadow-lg rounded" 
-                                : ""
-                            }`}
-                          >
-                            {row.marketShare.toFixed(2)}
-                          </td>
-                        ))}
-                      </tr>
-                      
-                      {/* Anstieg Row */}
-                      <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
-                        <td className="p-2 rounded-l-lg font-medium text-green-300">{t.increasePercent}</td>
-                        {marketShares.map((row, index) => {
-                          const percentageIncrease = index === 0 ? null : 
-                            ((row.marketShare - marketShares[index - 1].marketShare) / marketShares[index - 1].marketShare) * 100;
-                          
-                          return (
+                  {/* Mobile-optimized table */}
+                  <div className="overflow-x-auto">
+                    <table className="w-full mb-6 sm:mb-8 text-gray-200 border-separate border-spacing-y-1 sm:border-spacing-y-2 min-w-max">
+                      <thead>
+                        <tr className="text-green-400 text-sm sm:text-lg">
+                          <th className="p-1 sm:p-2 text-left text-xs sm:text-base">{t.dataType}</th>
+                          {marketShares.map((row) => (
+                            <th key={row.halbjahr} className="p-1 sm:p-2 text-center text-xs sm:text-base">{translatePeriod(row.halbjahr, t)}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {/* Branche Row */}
+                        <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
+                          <td className="p-1 sm:p-2 rounded-l-lg font-medium text-green-300 text-xs sm:text-base">{t.industryRevenueMio}</td>
+                          {marketShares.map((row) => (
+                            <td key={row.halbjahr} className="p-1 sm:p-2 text-center text-xs sm:text-base">{row.branche.toFixed(1)}</td>
+                          ))}
+                        </tr>
+                        
+                        {/* Sirius AG Row */}
+                        <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
+                          <td className="p-1 sm:p-2 rounded-l-lg font-medium text-green-300 text-xs sm:text-base">{t.siriusRevenueMio}</td>
+                          {marketShares.map((row) => (
+                            <td key={row.halbjahr} className="p-1 sm:p-2 text-center text-xs sm:text-base">{row.sirius.toFixed(1)}</td>
+                          ))}
+                        </tr>
+                        
+                        {/* Marktanteil Row */}
+                        <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
+                          <td className="p-1 sm:p-2 rounded-l-lg font-medium text-green-300 text-xs sm:text-base">{t.marketSharePercent}</td>
+                          {marketShares.map((row) => (
                             <td 
                               key={row.halbjahr} 
-                              className={`p-2 text-center ${
-                                (showSolutionB && maxInc.to && row.halbjahr === maxInc.to.halbjahr)
-                                  ? "bg-yellow-900/60 text-yellow-200 font-bold shadow-lg rounded"
+                              className={`p-1 sm:p-2 text-center font-bold text-xs sm:text-base ${
+                                (showSolutionA && row.halbjahr === maxShare.halbjahr) 
+                                  ? "bg-green-900/60 text-green-200 shadow-lg rounded" 
                                   : ""
                               }`}
                             >
-                              {percentageIncrease === null ? 
-                                <span className="text-gray-500">—</span> : 
-                                <span className={`font-bold ${percentageIncrease >= 0 ? "text-green-400" : "text-red-400"}`}>
-                                  {percentageIncrease >= 0 ? "+" : ""}{percentageIncrease.toFixed(2)}%
-                                </span>
-                              }
+                              {row.marketShare.toFixed(2)}
                             </td>
-                          );
-                        })}
-                      </tr>
-                    </tbody>
-                  </table>
+                          ))}
+                        </tr>
+                        
+                        {/* Anstieg Row */}
+                        <tr className="bg-gray-800/60 hover:bg-gray-700/50 transition-all duration-200">
+                          <td className="p-1 sm:p-2 rounded-l-lg font-medium text-green-300 text-xs sm:text-base">{t.increasePercent}</td>
+                          {marketShares.map((row, index) => {
+                            const percentageIncrease = index === 0 ? null : 
+                              ((row.marketShare - marketShares[index - 1].marketShare) / marketShares[index - 1].marketShare) * 100;
+                            
+                            return (
+                              <td 
+                                key={row.halbjahr} 
+                                className={`p-1 sm:p-2 text-center text-xs sm:text-base ${
+                                  (showSolutionB && maxInc.to && row.halbjahr === maxInc.to.halbjahr)
+                                    ? "bg-yellow-900/60 text-yellow-200 font-bold shadow-lg rounded"
+                                    : ""
+                                }`}
+                              >
+                                {percentageIncrease === null ? 
+                                  <span className="text-gray-500">—</span> : 
+                                  <span className={`font-bold ${percentageIncrease >= 0 ? "text-green-400" : "text-red-400"}`}>
+                                    {percentageIncrease >= 0 ? "+" : ""}{percentageIncrease.toFixed(2)}%
+                                  </span>
+                                }
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                   
-                  <div className="bg-blue-900/30 rounded-lg p-4 border-l-4 border-blue-500">
-                    <h4 className="text-blue-300 font-semibold mb-3">🔍 {t.stepByStepExplanation}</h4>
-                    <ol className="list-decimal list-inside space-y-2 text-gray-200">
+                  <div className="bg-blue-900/30 rounded-lg p-3 sm:p-4 border-l-4 border-blue-500">
+                    <h4 className="text-blue-300 font-semibold mb-2 sm:mb-3 text-sm sm:text-base">🔍 {t.stepByStepExplanation}</h4>
+                    <ol className="list-decimal list-inside space-y-1 sm:space-y-2 text-gray-200 text-xs sm:text-sm">
                       <li><strong>{t.step1}</strong> {t.step1Description}</li>
                       <li><strong>{t.step2}</strong> {t.step2Description}</li>
                       <li><strong>{t.step3}</strong> {t.step3Description}</li>
@@ -3378,10 +3383,10 @@ export default function SiriusMarketShare() {
 
           {/* Solution Buttons */}
           {showProblem && showCalculatedTable && (
-            <div className="flex flex-wrap gap-4 justify-center mb-8">
+            <div className="flex flex-wrap gap-2 sm:gap-4 justify-center mb-6 sm:mb-8">
               <button
                 onClick={() => setShowSolutionA(!showSolutionA)}
-                className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg font-[Tektur,monospace]"
+                className="bg-green-600 hover:bg-green-700 text-white font-bold py-1.5 sm:py-2 px-3 sm:px-4 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg font-[Tektur,monospace] text-sm sm:text-base"
                 style={{fontFamily: 'Tektur, monospace'}}
               >
                 {showSolutionA ? t.solutionAHide : t.solutionA}
@@ -3389,7 +3394,7 @@ export default function SiriusMarketShare() {
               
               <button
                 onClick={() => setShowSolutionB(!showSolutionB)}
-                className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg font-[Tektur,monospace]"
+                className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-1.5 sm:py-2 px-3 sm:px-4 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg font-[Tektur,monospace] text-sm sm:text-base"
                 style={{fontFamily: 'Tektur, monospace'}}
               >
                 {showSolutionB ? t.solutionBHide : t.solutionB}
@@ -3397,7 +3402,7 @@ export default function SiriusMarketShare() {
               
               <button
                 onClick={() => setShowCompleteAnalysis(!showCompleteAnalysis)}
-                className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg font-[Tektur,monospace]"
+                className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-1.5 sm:py-2 px-3 sm:px-4 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg font-[Tektur,monospace] text-sm sm:text-base"
                 style={{fontFamily: 'Tektur, monospace'}}
               >
                 {showCompleteAnalysis ? t.hideCompleteAnalysis : t.showCompleteAnalysis}
@@ -3522,16 +3527,16 @@ export default function SiriusMarketShare() {
 
         {/* Exercise 2 - Customer Survey */}
         {currentExercise === 'customer' && (
-          <div className={`rounded-xl shadow-xl p-8 w-full max-w-6xl border transition-colors ${
+          <div className={`rounded-xl shadow-xl p-4 sm:p-6 lg:p-8 w-full max-w-xs sm:max-w-4xl lg:max-w-6xl border transition-colors ${
             isDark 
               ? 'bg-gray-950/90 border-green-800' 
               : 'bg-white border-gray-200'
           }`} style={{fontFamily: 'Tektur, monospace'}}>
             {/* Back to Menu Button */}
-            <div className="mb-6">
+            <div className="mb-4 sm:mb-6">
               <button
                 onClick={resetToMenu}
-                className={`font-semibold py-2 px-4 rounded-lg transition-all duration-200 font-[Tektur,monospace] shadow-sm ${
+                className={`font-semibold py-1.5 sm:py-2 px-3 sm:px-4 rounded-lg transition-all duration-200 font-[Tektur,monospace] shadow-sm text-sm sm:text-base ${
                   isDark 
                     ? 'bg-gray-800 hover:bg-gray-700 text-green-400 border border-green-700' 
                     : 'bg-slate-600 hover:bg-slate-700 text-white'
@@ -3542,18 +3547,18 @@ export default function SiriusMarketShare() {
               </button>
             </div>
             
-            <h2 className={`text-3xl font-semibold mb-8 text-center font-[Tektur,monospace] ${
+            <h2 className={`text-xl sm:text-2xl lg:text-3xl font-semibold mb-6 sm:mb-8 text-center font-[Tektur,monospace] ${
               isDark ? 'text-green-400' : 'text-slate-800'
             }`}>{t.exercise2Title}</h2>
 
             {/* Introduction and Problem Statement */}
-            <div className={`border rounded-xl p-6 mb-6 transition-colors ${
+            <div className={`border rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 transition-colors ${
               isDark 
                 ? 'bg-gray-900/50 border-green-700' 
                 : 'bg-emerald-50 border-emerald-200'
             }`} style={{fontFamily: 'Tektur, monospace'}}>
-              <div className="flex items-center gap-4 mb-4">
-                <h3 className={`text-xl font-semibold font-[Tektur,monospace] ${
+              <div className="flex items-center gap-2 sm:gap-4 mb-3 sm:mb-4">
+                <h3 className={`text-lg sm:text-xl font-semibold font-[Tektur,monospace] ${
                   isDark ? 'text-green-400' : 'text-emerald-800'
                 }`}>{t.taskDescription}</h3>
               </div>
@@ -3561,7 +3566,7 @@ export default function SiriusMarketShare() {
               {!showCustomerProblem ? (
                 <button
                   onClick={() => setShowCustomerProblem(true)}
-                  className={`font-semibold py-3 px-6 rounded-lg transition-all duration-200 font-[Tektur,monospace] shadow-sm ${
+                  className={`font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-all duration-200 font-[Tektur,monospace] shadow-sm text-sm sm:text-base ${
                     isDark 
                       ? 'bg-green-700 hover:bg-green-600 text-black' 
                       : 'bg-emerald-600 hover:bg-emerald-700 text-white'
@@ -3571,24 +3576,24 @@ export default function SiriusMarketShare() {
                   {t.showTask}
                 </button>
               ) : (
-                <div className={`leading-relaxed ${isDark ? 'text-gray-300' : 'text-slate-700'}`}>
-                  <p className="mb-4">
+                <div className={`leading-relaxed text-sm sm:text-base ${isDark ? 'text-gray-300' : 'text-slate-700'}`}>
+                  <p className="mb-3 sm:mb-4">
                     {t.surveyDescription}
                   </p>
-                  <p className={`mb-4 font-semibold ${
+                  <p className={`mb-3 sm:mb-4 font-semibold ${
                     isDark ? 'text-green-400' : 'text-emerald-700'
                   }`}>
                     {t.gradeSystem}
                   </p>
-                  <div className={`border p-4 rounded-lg mb-4 shadow-sm ${
+                  <div className={`border p-3 sm:p-4 rounded-lg mb-3 sm:mb-4 shadow-sm ${
                     isDark 
                       ? 'bg-gray-950/70 border-green-700' 
                       : 'bg-white border-emerald-200'
                   }`}>
-                    <p className={`font-semibold mb-2 ${
+                    <p className={`font-semibold mb-2 text-sm sm:text-base ${
                       isDark ? 'text-green-400' : 'text-slate-800'
                     }`}>{t.tasks}</p>
-                    <ul className={`list-disc list-inside space-y-1 ${
+                    <ul className={`list-disc list-inside space-y-1 text-xs sm:text-sm ${
                       isDark ? 'text-gray-300' : 'text-slate-600'
                     }`}>
                       <li><strong>a)</strong> {t.taskCustomerA}</li>
@@ -3602,21 +3607,21 @@ export default function SiriusMarketShare() {
 
             {/* Data Table */}
             {showCustomerProblem && (
-              <div className={`border rounded-xl p-6 mb-6 transition-colors ${
+              <div className={`border rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 transition-colors ${
                 isDark 
                   ? 'bg-gray-900/50 border-green-700' 
                   : 'bg-slate-50 border-slate-200'
               }`} style={{fontFamily: 'Tektur, monospace'}}>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-4">
-                    <h3 className={`text-xl font-semibold font-[Tektur,monospace] ${
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 sm:mb-4 gap-3">
+                  <div className="flex items-center gap-2 sm:gap-4">
+                    <h3 className={`text-lg sm:text-xl font-semibold font-[Tektur,monospace] ${
                       isDark ? 'text-green-400' : 'text-slate-800'
                     }`}>{t.customerSurvey}</h3>
                   </div>
                   {!showCustomerTable && (
                     <button
                       onClick={() => setShowCustomerTable(true)}
-                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 font-[Tektur,monospace] shadow-sm"
+                      className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-1.5 sm:py-2 px-3 sm:px-4 rounded-lg transition-all duration-200 font-[Tektur,monospace] shadow-sm text-sm sm:text-base"
                       style={{fontFamily: 'Tektur, monospace'}}
                     >
                       {t.showTableCustomer}
@@ -3626,61 +3631,65 @@ export default function SiriusMarketShare() {
                 
                 {showCustomerTable && (
                   <div className="overflow-x-auto">
-                    <div className="mb-4 p-4 bg-blue-900/20 rounded-lg border border-blue-600">
-                      <h4 className="text-lg font-semibold text-blue-300 mb-3 font-[Tektur,monospace]">📊 {t.ratingLegend}</h4>
-                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+                    <div className="mb-3 sm:mb-4 p-3 sm:p-4 bg-blue-900/20 rounded-lg border border-blue-600">
+                      <h4 className="text-base sm:text-lg font-semibold text-blue-300 mb-2 sm:mb-3 font-[Tektur,monospace]">📊 {t.ratingLegend}</h4>
+                      <div className="grid grid-cols-3 sm:grid-cols-6 gap-1 sm:gap-2">
                         {[1, 2, 3, 4, 5, 6].map(grade => (
-                          <div key={grade} className={`px-3 py-2 rounded-lg text-center text-sm font-bold ${getGradeColor(grade)} font-[Tektur,monospace]`}>
-                            {grade} - {getGradeLabel(grade, t)}
+                          <div key={grade} className={`px-2 sm:px-3 py-1 sm:py-2 rounded-lg text-center text-xs sm:text-sm font-bold ${getGradeColor(grade)} font-[Tektur,monospace]`}>
+                            <div className="sm:hidden">{grade}</div>
+                            <div className="hidden sm:block">{grade} - {getGradeLabel(grade, t)}</div>
                           </div>
                         ))}
                       </div>
                     </div>
                     
-                    <table className="w-full border-collapse border border-gray-600 rounded-lg overflow-hidden">
-                      <thead>
-                        <tr className="bg-blue-800/50">
-                          <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace]">{t.customer}</th>
-                          <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace]">{t.function}</th>
-                          <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace]">{t.performance}</th>
-                          <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace]">{t.eco}</th>
-                          <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace]">{t.price}</th>
-                          <th className="border border-gray-600 px-4 py-3 text-green-300 font-[Tektur,monospace]">{t.average}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {calculateCustomerAverages().map((customer, index) => (
-                          <tr key={customer.kunde} className={index % 2 === 0 ? "bg-gray-800/50" : "bg-gray-900/50"}>
-                            <td className="border border-gray-600 px-4 py-3 text-white font-bold font-[Tektur,monospace]">{customer.kunde}</td>
-                            <td className="border border-gray-600 px-2 py-3 text-center font-[Tektur,monospace]">
-                              <span className={`px-3 py-1 rounded-lg font-bold ${getGradeColor(customer.funktion)}`}>
-                                {customer.funktion}
-                              </span>
-                            </td>
-                            <td className="border border-gray-600 px-2 py-3 text-center font-[Tektur,monospace]">
-                              <span className={`px-3 py-1 rounded-lg font-bold ${getGradeColor(customer.leistung)}`}>
-                                {customer.leistung}
-                              </span>
-                            </td>
-                            <td className="border border-gray-600 px-2 py-3 text-center font-[Tektur,monospace]">
-                              <span className={`px-3 py-1 rounded-lg font-bold ${getGradeColor(customer.oeko)}`}>
-                                {customer.oeko}
-                              </span>
-                            </td>
-                            <td className="border border-gray-600 px-2 py-3 text-center font-[Tektur,monospace]">
-                              <span className={`px-3 py-1 rounded-lg font-bold ${getGradeColor(customer.preis)}`}>
-                                {customer.preis}
-                              </span>
-                            </td>
-                            <td className="border border-gray-600 px-2 py-3 text-center font-[Tektur,monospace]">
-                              <span className={`px-3 py-2 rounded-lg font-bold ${getAverageGradeColor(customer.durchschnitt!)}`}>
-                                {customer.durchschnitt?.toFixed(2)}
-                              </span>
-                            </td>
+                    {/* Mobile-optimized table */}
+                    <div className="min-w-max">
+                      <table className="w-full border-collapse border border-gray-600 rounded-lg overflow-hidden">
+                        <thead>
+                          <tr className="bg-blue-800/50">
+                            <th className="border border-gray-600 px-2 sm:px-4 py-2 sm:py-3 text-blue-200 font-[Tektur,monospace] text-xs sm:text-sm">{t.customer}</th>
+                            <th className="border border-gray-600 px-2 sm:px-4 py-2 sm:py-3 text-blue-200 font-[Tektur,monospace] text-xs sm:text-sm">{t.function}</th>
+                            <th className="border border-gray-600 px-2 sm:px-4 py-2 sm:py-3 text-blue-200 font-[Tektur,monospace] text-xs sm:text-sm">{t.performance}</th>
+                            <th className="border border-gray-600 px-2 sm:px-4 py-2 sm:py-3 text-blue-200 font-[Tektur,monospace] text-xs sm:text-sm">{t.eco}</th>
+                            <th className="border border-gray-600 px-2 sm:px-4 py-2 sm:py-3 text-blue-200 font-[Tektur,monospace] text-xs sm:text-sm">{t.price}</th>
+                            <th className="border border-gray-600 px-2 sm:px-4 py-2 sm:py-3 text-green-300 font-[Tektur,monospace] text-xs sm:text-sm">{t.average}</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody>
+                          {calculateCustomerAverages().map((customer, index) => (
+                            <tr key={customer.kunde} className={index % 2 === 0 ? "bg-gray-800/50" : "bg-gray-900/50"}>
+                              <td className="border border-gray-600 px-2 sm:px-4 py-2 sm:py-3 text-white font-bold font-[Tektur,monospace] text-xs sm:text-sm">{customer.kunde}</td>
+                              <td className="border border-gray-600 px-1 sm:px-2 py-2 sm:py-3 text-center font-[Tektur,monospace]">
+                                <span className={`px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-lg font-bold text-xs sm:text-sm ${getGradeColor(customer.funktion)}`}>
+                                  {customer.funktion}
+                                </span>
+                              </td>
+                              <td className="border border-gray-600 px-1 sm:px-2 py-2 sm:py-3 text-center font-[Tektur,monospace]">
+                                <span className={`px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-lg font-bold text-xs sm:text-sm ${getGradeColor(customer.leistung)}`}>
+                                  {customer.leistung}
+                                </span>
+                              </td>
+                              <td className="border border-gray-600 px-1 sm:px-2 py-2 sm:py-3 text-center font-[Tektur,monospace]">
+                                <span className={`px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-lg font-bold text-xs sm:text-sm ${getGradeColor(customer.oeko)}`}>
+                                  {customer.oeko}
+                                </span>
+                              </td>
+                              <td className="border border-gray-600 px-1 sm:px-2 py-2 sm:py-3 text-center font-[Tektur,monospace]">
+                                <span className={`px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-lg font-bold text-xs sm:text-sm ${getGradeColor(customer.preis)}`}>
+                                  {customer.preis}
+                                </span>
+                              </td>
+                              <td className="border border-gray-600 px-1 sm:px-2 py-2 sm:py-3 text-center font-[Tektur,monospace]">
+                                <span className={`px-1.5 sm:px-3 py-0.5 sm:py-2 rounded-lg font-bold text-xs sm:text-sm ${getAverageGradeColor(customer.durchschnitt!)}`}>
+                                  {customer.durchschnitt?.toFixed(2)}
+                                </span>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 )}
               </div>
