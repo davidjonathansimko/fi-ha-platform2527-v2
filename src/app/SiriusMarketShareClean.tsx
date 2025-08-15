@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 type DataRow = {
   halbjahr: string;
@@ -8,6 +8,8 @@ type DataRow = {
 };
 
 type MarketShareRow = DataRow & { marketShare: number };
+
+type TranslationObject = Record<string, string>;
 
 type Theme = 'light' | 'dark' | 'system';
 type Language = 'de' | 'en' | 'tr' | 'ro' | 'sy' | 'ar' | 'ru' | 'pl' | 'at' | 'ch' | 'nl' | 'cz' | 'sk' | 'md';
@@ -2787,7 +2789,7 @@ function calculateEcoAverageGrade(): number {
   return totalEco / customerData.length;
 }
 
-function getGradeDescription(grade: number, t: any): string {
+function getGradeDescription(grade: number, t: TranslationObject): string {
   if (grade <= 1.5) return t.gradeVeryGood;
   if (grade <= 2.5) return t.gradeGood;
   if (grade <= 3.5) return t.gradeSatisfactory;
@@ -2809,7 +2811,7 @@ function getGradeColor(grade: number): string {
   }
 }
 
-function getGradeLabel(grade: number, t: any): string {
+function getGradeLabel(grade: number, t: TranslationObject): string {
   switch (grade) {
     case 1: return t.gradeLabelVeryGood;
     case 2: return t.gradeLabelGood;
@@ -2849,7 +2851,7 @@ function useTypingEffect(text: string, speed = 50) {
 }
 
 // Function to translate period names
-function translatePeriod(germanPeriod: string, t: any): string {
+function translatePeriod(germanPeriod: string, t: TranslationObject): string {
   if (germanPeriod.includes("1. Halbj.")) {
     return germanPeriod.replace("1. Halbj.", t.firstHalf);
   }
@@ -3868,7 +3870,7 @@ export default function SiriusMarketShare() {
                         <ul className="list-disc list-inside space-y-2 text-gray-300">
                           <li>{t.majorityOfCustomers} ({calculateGoodOrBetterPercentage().toFixed(1)}%) {t.ratedGoodOrBetter}</li>
                           <li>{t.onlyPercentage} {calculateSufficientOrWorsePercentage().toFixed(1)}% {t.gaveSatisfactoryOrWorse}</li>
-                          <li>{t.ecoAspectsRated} {calculateEcoAverageGrade().toFixed(2)} {t.correspondTo} "{getGradeDescription(calculateEcoAverageGrade(), t)}"</li>
+                          <li>{t.ecoAspectsRated} {calculateEcoAverageGrade().toFixed(2)} {t.correspondTo} &quot;{getGradeDescription(calculateEcoAverageGrade(), t)}&quot;</li>
                           <li className="text-purple-200 font-semibold">
                             {t.recommendation} {calculateEcoAverageGrade() > 3.0 ? 
                               t.improveEcoAspects : 

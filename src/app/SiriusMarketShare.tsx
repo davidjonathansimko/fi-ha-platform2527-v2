@@ -115,12 +115,6 @@ export default function SiriusMarketShare() {
   const maxShare = findMaxMarketShare(marketShares);
   const maxInc = findMaxIncrease(marketShares);
   const title = useTypingEffect("Sirius AG Marktanteil Analyse", 60);
-  
-  // State for interactive revelation
-  const [showProblem, setShowProblem] = React.useState(false);
-  const [showSolutionA, setShowSolutionA] = React.useState(false);
-  const [showSolutionB, setShowSolutionB] = React.useState(false);
-  const [showCompleteAnalysis, setShowCompleteAnalysis] = React.useState(false);
 
   return (
     <>
