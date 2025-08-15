@@ -1,6 +1,34 @@
-# Multilingual Business Analysis Application
+# FI-HA Platform - Multilingual Business Analytics with Authentication
 
-A comprehensive Next.js application for business analytics exercises with support for 14 languages.
+A comprehensive Next.js application for business analytics exercises with support for 14 languages and Supabase authentication.
+
+## 🔐 Authentication Features
+
+- **Supabase Authentication**: Secure user registration and login
+- **GitHub OAuth Integration**: One-click GitHub login
+- **Email/Password Authentication**: Traditional email signup/signin
+- **Magic Link Support**: Passwordless email authentication
+- **User Profile Management**: Avatar, user info, and logout functionality
+- **Session Management**: Persistent authentication across page reloads
+
+## 🚀 Quick Setup
+
+### 1. Clone and Install
+```bash
+git clone https://github.com/davidjonathansimko/fi-ha-platform2527.git
+cd fi-ha-platform2527
+npm install
+```
+
+### 2. Supabase Setup
+1. Create a project at [Supabase](https://supabase.com)
+2. Copy `.env.local.example` to `.env.local`
+3. Add your Supabase URL and key to `.env.local`
+
+### 3. Run Development Server
+```bash
+npm run dev
+```
 
 ## 🌍 Languages Supported
 
@@ -142,7 +170,37 @@ The application supports deployment on:
 - Digital Ocean App Platform
 - AWS Amplify
 
-## 📄 License
+## � Supabase Authentication Setup
+
+### Step 1: Create Supabase Project
+1. Go to [Supabase](https://supabase.com) and create a new project
+2. Wait for the project setup to complete
+
+### Step 2: Get Credentials
+1. In Supabase dashboard → **Settings** → **API**
+2. Copy your **Project URL** and **anon/public key**
+
+### Step 3: Environment Variables
+1. Copy `.env.local.example` to `.env.local`
+2. Update with your credentials:
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+```
+
+### Step 4: GitHub OAuth (Optional)
+1. In Supabase → **Authentication** → **Providers** → Enable GitHub
+2. Create GitHub OAuth App:
+   - Homepage URL: `http://localhost:3000`
+   - Callback URL: `https://your-project.supabase.co/auth/v1/callback`
+3. Add GitHub Client ID & Secret to Supabase
+
+### Step 5: Configure URLs
+In Supabase → **Authentication** → **Settings**:
+- **Site URL**: `http://localhost:3000` (dev) or your production URL
+- **Redirect URLs**: Add `http://localhost:3000/auth/callback`
+
+## �📄 License
 
 This project is licensed under the MIT License.
 
