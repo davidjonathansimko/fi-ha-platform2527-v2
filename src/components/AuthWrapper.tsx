@@ -34,7 +34,7 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-green-900 to-gray-800 flex items-center justify-center">
         <div className="text-white text-xl font-[Tektur,monospace]">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-400 mx-auto mb-4"></div>
           Loading...
@@ -52,20 +52,58 @@ export default function AuthWrapper({ children }: AuthWrapperProps) {
 
 function AuthPage() {
   const [authMode, setAuthMode] = useState<'sign_in' | 'sign_up'>('sign_in')
+  const [language, setLanguage] = useState<'de' | 'en' | 'tr' | 'fr'>('de')
+
+  // Language options for auth page
+  const authLanguages = {
+    de: { name: '🇩🇪 Deutsch', welcome: 'Willkommen zurück', create: 'Konto erstellen', signin: 'Anmelden', signup: 'Registrieren', signText: 'Melden Sie sich an, um auf Ihr Analytics-Dashboard zuzugreifen', createText: 'Treten Sie uns bei, um Geschäftsdaten zu analysieren', noAccount: 'Noch kein Konto? Registrieren', hasAccount: 'Bereits ein Konto? Anmelden', platform: 'Plattform', subtitle: 'Multilingual FI-DAA Hausaufgaben Platform', languages: '14 Sprachen', analytics: 'Analytics Tools', mobile: 'Mobil-Bereit' },
+    en: { name: '🇬🇧 English', welcome: 'Welcome Back', create: 'Create Account', signin: 'Sign In', signup: 'Sign Up', signText: 'Sign in to access your analytics dashboard', createText: 'Join us to start analyzing business data', noAccount: "Don't have an account? Sign up", hasAccount: 'Already have an account? Sign in', platform: 'Platform', subtitle: 'Multilingual FI-DAA Hausaufgaben Platform', languages: '14 Languages', analytics: 'Analytics Tools', mobile: 'Mobile Ready' },
+    tr: { name: '🇹🇷 Türkçe', welcome: 'Tekrar Hoş Geldiniz', create: 'Hesap Oluştur', signin: 'Giriş Yap', signup: 'Kayıt Ol', signText: 'Analitik panonuza erişmek için giriş yapın', createText: 'İş verilerini analiz etmeye başlamak için bize katılın', noAccount: 'Hesabınız yok mu? Kayıt olun', hasAccount: 'Zaten hesabınız var mı? Giriş yapın', platform: 'Platform', subtitle: 'Multilingual FI-DAA Hausaufgaben Platform', languages: '14 Dil', analytics: 'Analitik Araçları', mobile: 'Mobil Hazır' },
+    fr: { name: '�� Français', welcome: 'Bon retour', create: 'Créer un compte', signin: 'Se connecter', signup: "S'inscrire", signText: 'Connectez-vous pour accéder à votre tableau de bord analytique', createText: 'Rejoignez-nous pour commencer à analyser les données commerciales', noAccount: 'Pas de compte? Inscrivez-vous', hasAccount: 'Déjà un compte? Connectez-vous', platform: 'Plateforme', subtitle: 'Multilingual FI-DAA Hausaufgaben Platform', languages: '14 Langues', analytics: 'Outils d\'analyse', mobile: 'Mobile Ready' }
+  }
+
+  const currentLang = authLanguages[language]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-green-900 to-gray-800 relative overflow-hidden">
+      {/* Animated Background Blobs */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-green-600/10 rounded-full blur-3xl animate-pulse delay-700"></div>
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-gray-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+      
+      <div className="relative z-10 min-h-screen flex items-center justify-center p-4">
+        <div className="w-full max-w-md">
+          {/* Language Selector with Glassmorphism */}
+          <div className="flex justify-center mb-8">
+            <div className="flex bg-gray-900/30 backdrop-blur-xl rounded-2xl p-2 border border-green-500/20 shadow-2xl">
+              {Object.entries(authLanguages).map(([code, lang]) => (
+                <button
+                  key={code}
+                  onClick={() => setLanguage(code as any)}
+                  className={`px-4 py-2 rounded-xl text-xs font-[Tektur,monospace] transition-all duration-300 ${
+                    language === code
+                      ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-lg shadow-green-500/25'
+                      : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
+                }`}
+              >
+                {lang.name}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Logo/Title Section */}
         <div className="text-center mb-8">
-          <div className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+          <div className="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent">
             <h1 className="text-4xl sm:text-5xl font-bold font-[Tektur,monospace] mb-2">
               FI-HA
             </h1>
-            <p className="text-xl font-[Tektur,monospace]">Platform</p>
+            <p className="text-xl font-[Tektur,monospace]">{currentLang.platform}</p>
           </div>
           <p className="text-gray-300 mt-4 text-sm font-[Tektur,monospace]">
-            Multilingual Business Analytics Platform
+            {currentLang.subtitle}
           </p>
         </div>
 
@@ -73,18 +111,24 @@ function AuthPage() {
         <div className="bg-gray-800/60 backdrop-blur-lg rounded-2xl border border-gray-700 p-8 shadow-2xl">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-white font-[Tektur,monospace] mb-2">
-              {authMode === 'sign_in' ? 'Welcome Back' : 'Create Account'}
+              {authMode === 'sign_in' ? currentLang.welcome : currentLang.create}
             </h2>
             <p className="text-gray-400 text-sm font-[Tektur,monospace]">
-              {authMode === 'sign_in' 
-                ? 'Sign in to access your analytics dashboard' 
-                : 'Join us to start analyzing business data'
-              }
+              {authMode === 'sign_in' ? currentLang.signText : currentLang.createText}
             </p>
           </div>
 
-          {/* Supabase Auth Component */}
-          <div className="auth-container">
+          {/* Glassmorphism Auth Container */}
+          <div className="bg-gray-900/30 backdrop-blur-xl rounded-3xl p-8 border border-green-500/20 shadow-2xl shadow-green-500/5">
+            <div className="mb-6 text-center">
+              <h2 className="text-2xl font-bold text-white font-[Tektur,monospace] mb-2">
+                {authMode === 'sign_in' ? currentLang.welcome : currentLang.create}
+              </h2>
+              <p className="text-gray-300 text-sm">
+                {authMode === 'sign_in' ? currentLang.signText : currentLang.createText}
+              </p>
+            </div>
+            
             <Auth
               supabaseClient={supabase}
               view={authMode}
@@ -96,13 +140,13 @@ function AuthPage() {
                       brand: '#10b981',
                       brandAccent: '#059669',
                       brandButtonText: 'white',
-                      defaultButtonBackground: '#374151',
-                      defaultButtonBackgroundHover: '#4b5563',
-                      defaultButtonBorder: '#6b7280',
+                      defaultButtonBackground: 'rgba(55, 65, 81, 0.6)',
+                      defaultButtonBackgroundHover: 'rgba(75, 85, 99, 0.8)',
+                      defaultButtonBorder: 'rgba(34, 197, 94, 0.3)',
                       defaultButtonText: 'white',
-                      dividerBackground: '#6b7280',
-                      inputBackground: '#1f2937',
-                      inputBorder: '#6b7280',
+                      dividerBackground: 'rgba(107, 114, 128, 0.5)',
+                      inputBackground: 'rgba(31, 41, 55, 0.6)',
+                      inputBorder: 'rgba(34, 197, 94, 0.3)',
                       inputBorderHover: '#10b981',
                       inputBorderFocus: '#10b981',
                       inputText: 'white',
@@ -172,10 +216,7 @@ function AuthPage() {
               onClick={() => setAuthMode(authMode === 'sign_in' ? 'sign_up' : 'sign_in')}
               className="text-green-400 hover:text-green-300 font-[Tektur,monospace] text-sm transition-colors duration-200"
             >
-              {authMode === 'sign_in' 
-                ? "Don't have an account? Sign up" 
-                : "Already have an account? Sign in"
-              }
+              {authMode === 'sign_in' ? currentLang.noAccount : currentLang.hasAccount}
             </button>
           </div>
         </div>
@@ -185,19 +226,20 @@ function AuthPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <div className="text-gray-400 font-[Tektur,monospace]">
               <div className="text-green-400 mb-1">🌍</div>
-              14 Languages
+              {currentLang.languages}
             </div>
             <div className="text-gray-400 font-[Tektur,monospace]">
-              <div className="text-blue-400 mb-1">📊</div>
-              Analytics Tools
+              <div className="text-green-400 mb-1">📊</div>
+              {currentLang.analytics}
             </div>
             <div className="text-gray-400 font-[Tektur,monospace]">
-              <div className="text-purple-400 mb-1">📱</div>
-              Mobile Ready
+              <div className="text-green-400 mb-1">📱</div>
+              {currentLang.mobile}
             </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }

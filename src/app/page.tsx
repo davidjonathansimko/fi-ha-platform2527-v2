@@ -1,12 +1,6 @@
 
-import SiriusMarketShare from "./SiriusMarketShareClean";
-import UserProfile from "@/components/UserProfile";
+import AuthenticatedApp from "@/components/AuthenticatedApp";
 
 export default function Home() {
-  return (
-    <>
-      <UserProfile />
-      <SiriusMarketShare />
-    </>
-  );
+  return <AuthenticatedApp />;
 }

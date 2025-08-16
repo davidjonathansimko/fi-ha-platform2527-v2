@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import { User } from '@supabase/supabase-js'
+import { isAdmin } from '@/lib/admin'
 
 export default function UserProfile() {
   const [user, setUser] = useState<User | null>(null)
@@ -21,8 +22,21 @@ export default function UserProfile() {
       setUser(session?.user ?? null)
     })
 
-    return () => subscription.unsubscribe()
-  }, [])
+    // Click outside to close dropdown
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element
+      if (showProfile && !target.closest('.user-profile-dropdown')) {
+        setShowProfile(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+
+    return () => {
+      subscription.unsubscribe()
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [showProfile])
 
   const handleLogout = async () => {
     await supabase.auth.signOut()
@@ -32,11 +46,14 @@ export default function UserProfile() {
   if (!user) return null
 
   return (
-    <div className="fixed top-4 right-4 z-50">
+    <div className="fixed top-4 right-32 z-[100] user-profile-dropdown">
+
+  return (
+    <div className="fixed top-4 right-32 z-[100] user-profile-dropdown">>
       {/* User Avatar */}
       <button
         onClick={() => setShowProfile(!showProfile)}
-        className="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center text-white font-bold font-[Tektur,monospace] text-sm hover:scale-110 transition-transform duration-200 shadow-lg"
+        className="w-10 h-10 rounded-full bg-gradient-to-r from-green-600 to-green-700 flex items-center justify-center text-white font-bold font-[Tektur,monospace] text-sm hover:scale-110 transition-transform duration-200 shadow-lg"
       >
         {user.user_metadata?.avatar_url ? (
           <img
@@ -51,11 +68,16 @@ export default function UserProfile() {
 
       {/* Profile Dropdown */}
       {showProfile && (
-        <div className="absolute top-12 right-0 w-64 bg-gray-800/95 backdrop-blur-lg rounded-xl border border-gray-700 shadow-2xl overflow-hidden">
+        <>
+          {/* Overlay */}
+          <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[105]" onClick={() => setShowProfile(false)}></div>
+          
+          {/* Dropdown */}
+          <div className="absolute top-12 right-0 w-64 bg-gray-800/95 backdrop-blur-lg rounded-xl border border-gray-700 shadow-2xl overflow-hidden z-[110]">
           {/* Header */}
-          <div className="p-4 bg-gradient-to-r from-green-600/20 to-blue-600/20 border-b border-gray-700">
+          <div className="p-4 bg-gradient-to-r from-green-700/20 to-green-800/20 border-b border-gray-700">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center text-white font-bold">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-r from-green-600 to-green-700 flex items-center justify-center text-white font-bold">
                 {user.user_metadata?.avatar_url ? (
                   <img
                     src={user.user_metadata.avatar_url}
@@ -67,9 +89,16 @@ export default function UserProfile() {
                 )}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-white font-medium font-[Tektur,monospace] text-sm truncate">
-                  {user.user_metadata?.full_name || user.email?.split('@')[0] || 'User'}
-                </p>
+                <div className="flex items-center space-x-2">
+                  <p className="text-white font-medium font-[Tektur,monospace] text-sm truncate">
+                    {user.user_metadata?.full_name || user.email?.split('@')[0] || 'User'}
+                  </p>
+                  {isAdmin(user.email || '') && (
+                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-green-600 text-white">
+                      ADMIN
+                    </span>
+                  )}
+                </div>
                 <p className="text-gray-400 text-xs font-[Tektur,monospace] truncate">
                   {user.email}
                 </p>
@@ -86,15 +115,15 @@ export default function UserProfile() {
                   {user.app_metadata?.provider || 'email'}
                 </span>
               </div>
-              <div className="flex justify-between mb-1">
+              <div className="flex justify-between">
                 <span>Signed in:</span>
-                <span className="text-blue-400">
+                <span className="text-gray-400">
                   {user.created_at ? new Date(user.created_at).toLocaleDateString() : 'Unknown'}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span>Last login:</span>
-                <span className="text-purple-400">
+                <span className="text-green-400">
                   {user.last_sign_in_at ? new Date(user.last_sign_in_at).toLocaleDateString() : 'Unknown'}
                 </span>
               </div>
@@ -114,6 +143,7 @@ export default function UserProfile() {
             </button>
           </div>
         </div>
+        </>
       )}
     </div>
   )

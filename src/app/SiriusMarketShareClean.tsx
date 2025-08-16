@@ -2986,7 +2986,7 @@ export default function SiriusMarketShare() {
                     onClick={() => setLanguage(code as Language)}
                     className={`w-full text-left px-2 py-1 rounded text-xs sm:text-sm transition-colors ${
                       language === code
-                        ? isDark ? 'bg-green-700 text-green-100' : 'bg-blue-100 text-blue-800'
+                        ? isDark ? 'bg-green-700 text-green-100' : 'bg-green-100 text-green-800'
                         : isDark ? 'hover:bg-gray-800 text-gray-300' : 'hover:bg-gray-100 text-slate-700'
                     }`}
                   >
@@ -3021,7 +3021,7 @@ export default function SiriusMarketShare() {
                     onClick={() => setTheme(themeOption)}
                     className={`w-full text-left px-2 py-1 rounded text-xs sm:text-sm transition-colors flex items-center gap-1 sm:gap-2 ${
                       theme === themeOption
-                        ? isDark ? 'bg-green-700 text-green-100' : 'bg-blue-100 text-blue-800'
+                        ? isDark ? 'bg-green-700 text-green-100' : 'bg-green-100 text-green-800'
                         : isDark ? 'hover:bg-gray-800 text-gray-300' : 'hover:bg-gray-100 text-slate-700'
                     }`}
                   >
@@ -3057,10 +3057,10 @@ export default function SiriusMarketShare() {
                 <div className={`border rounded-lg p-4 sm:p-6 hover:shadow-lg transition-all duration-300 ${
                   isDark 
                     ? 'bg-gradient-to-br from-gray-900/80 to-gray-800/80 border-green-700 hover:border-green-600' 
-                    : 'bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200 hover:border-blue-300'
+                    : 'bg-gradient-to-br from-green-50 to-green-100 border-green-200 hover:border-green-300'
                 }`}>
                   <h3 className={`text-lg sm:text-xl font-semibold mb-2 sm:mb-3 font-[Tektur,monospace] ${
-                    isDark ? 'text-green-400' : 'text-blue-800'
+                    isDark ? 'text-green-400' : 'text-green-800'
                   }`}>{t.exercise1}</h3>
                   <h4 className={`text-base sm:text-lg mb-2 sm:mb-3 font-[Tektur,monospace] ${
                     isDark ? 'text-green-300' : 'text-blue-700'
@@ -3070,13 +3070,13 @@ export default function SiriusMarketShare() {
                   }`}>{t.exercise1Desc}</p>
                   <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6">
                     <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
-                      isDark ? 'bg-green-800/50 text-green-300' : 'bg-blue-200 text-blue-800'
+                      isDark ? 'bg-green-800/50 text-green-300' : 'bg-green-200 text-green-800'
                     }`}>{t.marketAnalysis}</span>
                     <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
-                      isDark ? 'bg-green-800/50 text-green-300' : 'bg-blue-200 text-blue-800'
+                      isDark ? 'bg-green-800/50 text-green-300' : 'bg-green-200 text-green-800'
                     }`}>{t.percentageCalculation}</span>
                     <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium ${
-                      isDark ? 'bg-green-800/50 text-green-300' : 'bg-blue-200 text-blue-800'
+                      isDark ? 'bg-green-800/50 text-green-300' : 'bg-green-200 text-green-800'
                     }`}>{t.trendCalculation}</span>
                   </div>
                   <button
@@ -3184,10 +3184,10 @@ export default function SiriusMarketShare() {
               <div className={`border rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 transition-colors ${
                 isDark 
                   ? 'bg-gray-900/50 border-green-700' 
-                  : 'bg-blue-50 border-blue-200'
+                  : 'bg-green-50 border-green-200'
               }`}>
                 <h3 className={`text-lg sm:text-xl font-semibold mb-3 sm:mb-4 font-[Tektur,monospace] ${
-                  isDark ? 'text-green-400' : 'text-blue-800'
+                  isDark ? 'text-green-400' : 'text-green-800'
                 }`}>{t.taskStatement}</h3>
                 <div className={`rounded-lg p-3 sm:p-4 leading-relaxed shadow-sm ${
                   isDark ? 'bg-gray-950/70 text-gray-300' : 'bg-white text-slate-700'
@@ -3273,7 +3273,7 @@ export default function SiriusMarketShare() {
                     }`}>
                       <p className="text-sm sm:text-base"><strong>{t.basicFormula}</strong></p>
                       <div className={`p-2 sm:p-3 rounded font-mono text-center border text-xs sm:text-sm ${
-                        isDark ? 'bg-blue-900/30 border-blue-700 text-blue-300' : 'bg-blue-50 border-blue-200 text-blue-800'
+                        isDark ? 'bg-green-900/30 border-green-700 text-green-300' : 'bg-green-50 border-green-200 text-green-800'
                       }`}>
                         <span>{t.basicFormulaText}</span>
                       </div>
@@ -3424,8 +3424,8 @@ export default function SiriusMarketShare() {
                     </div>
                   </div>
                   
-                  <div className="bg-blue-900/30 rounded-lg p-3 sm:p-4 border-l-4 border-blue-500">
-                    <h4 className="text-blue-300 font-semibold mb-2 sm:mb-3 text-sm sm:text-base">🔍 {t.stepByStepExplanation}</h4>
+                  <div className="bg-green-900/30 rounded-lg p-3 sm:p-4 border-l-4 border-green-500">
+                    <h4 className="text-green-300 font-semibold mb-2 sm:mb-3 text-sm sm:text-base">🔍 {t.stepByStepExplanation}</h4>
                     <ol className="list-decimal list-inside space-y-1 sm:space-y-2 text-gray-200 text-xs sm:text-sm">
                       <li><strong>{t.step1}</strong> {t.step1Description}</li>
                       <li><strong>{t.step2}</strong> {t.step2Description}</li>
@@ -3565,8 +3565,8 @@ export default function SiriusMarketShare() {
                         <strong className="text-yellow-400">{t.strongestIncrease}</strong><br/>
                         <span className="text-sm">{maxInc.percentageIncrease?.toFixed(2)}% {t.showsDynamicDevelopment}</span>
                       </div>
-                      <div className="bg-blue-900/30 p-3 rounded border-l-4 border-blue-500">
-                        <strong className="text-blue-400">{t.trendAnalysis}</strong><br/>
+                      <div className="bg-green-900/30 p-3 rounded border-l-4 border-green-500">
+                        <strong className="text-green-400">{t.trendAnalysis}</strong><br/>
                         <span className="text-sm">{t.continuousGrowth}</span>
                       </div>
                       <div className="bg-gray-700/50 p-3 rounded border-l-4 border-gray-500">
@@ -3709,30 +3709,30 @@ export default function SiriusMarketShare() {
                             <div key={customer.kunde} className={`rounded-md p-2 border border-gray-600 ${
                               index % 2 === 0 ? "bg-gray-800/50" : "bg-gray-900/50"
                             }`}>
-                              <div className="text-blue-200 font-bold text-xs mb-2 text-center border-b border-gray-600 pb-1 font-[Tektur,monospace]">
+                              <div className="text-green-200 font-bold text-xs mb-2 text-center border-b border-gray-600 pb-1 font-[Tektur,monospace]">
                                 {customer.kunde}
                               </div>
                               <div className="space-y-1">
                                 <div className="flex justify-between items-center text-xs">
-                                  <span className="text-blue-200 font-[Tektur,monospace] truncate pr-1">Func</span>
+                                  <span className="text-green-200 font-[Tektur,monospace] truncate pr-1">Func</span>
                                   <span className={`px-1 py-0.5 rounded font-bold text-xs ${getGradeColor(customer.funktion)} font-[Tektur,monospace]`}>
                                     {customer.funktion}
                                   </span>
                                 </div>
                                 <div className="flex justify-between items-center text-xs">
-                                  <span className="text-blue-200 font-[Tektur,monospace] truncate pr-1">Perf</span>
+                                  <span className="text-green-200 font-[Tektur,monospace] truncate pr-1">Perf</span>
                                   <span className={`px-1 py-0.5 rounded font-bold text-xs ${getGradeColor(customer.leistung)} font-[Tektur,monospace]`}>
                                     {customer.leistung}
                                   </span>
                                 </div>
                                 <div className="flex justify-between items-center text-xs">
-                                  <span className="text-blue-200 font-[Tektur,monospace] truncate pr-1">Eco</span>
+                                  <span className="text-green-200 font-[Tektur,monospace] truncate pr-1">Eco</span>
                                   <span className={`px-1 py-0.5 rounded font-bold text-xs ${getGradeColor(customer.oeko)} font-[Tektur,monospace]`}>
                                     {customer.oeko}
                                   </span>
                                 </div>
                                 <div className="flex justify-between items-center text-xs">
-                                  <span className="text-blue-200 font-[Tektur,monospace] truncate pr-1">Price</span>
+                                  <span className="text-green-200 font-[Tektur,monospace] truncate pr-1">Price</span>
                                   <span className={`px-1 py-0.5 rounded font-bold text-xs ${getGradeColor(customer.preis)} font-[Tektur,monospace]`}>
                                     {customer.preis}
                                   </span>
@@ -3753,12 +3753,12 @@ export default function SiriusMarketShare() {
                       <div className="hidden lg:block overflow-x-auto">
                         <table className="w-full border-collapse border border-gray-600 rounded-lg overflow-hidden">
                           <thead>
-                            <tr className="bg-blue-800/50">
-                              <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace] text-sm">{t.customer}</th>
-                              <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace] text-sm">{t.function}</th>
-                              <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace] text-sm">{t.performance}</th>
-                              <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace] text-sm">{t.eco}</th>
-                              <th className="border border-gray-600 px-4 py-3 text-blue-200 font-[Tektur,monospace] text-sm">{t.price}</th>
+                            <tr className="bg-green-800/50">
+                              <th className="border border-gray-600 px-4 py-3 text-green-200 font-[Tektur,monospace] text-sm">{t.customer}</th>
+                              <th className="border border-gray-600 px-4 py-3 text-green-200 font-[Tektur,monospace] text-sm">{t.function}</th>
+                              <th className="border border-gray-600 px-4 py-3 text-green-200 font-[Tektur,monospace] text-sm">{t.performance}</th>
+                              <th className="border border-gray-600 px-4 py-3 text-green-200 font-[Tektur,monospace] text-sm">{t.eco}</th>
+                              <th className="border border-gray-600 px-4 py-3 text-green-200 font-[Tektur,monospace] text-sm">{t.price}</th>
                               <th className="border border-gray-600 px-4 py-3 text-green-300 font-[Tektur,monospace] text-sm">{t.average}</th>
                             </tr>
                           </thead>
